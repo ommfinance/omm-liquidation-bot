@@ -138,9 +138,13 @@ if __name__ == "__main__":
     # instance.fetch_borrow_wallets()
 
     # custom borrowers
-    instance.fetch_user_borrow_wallet(['hx4818f8bc679c28ce379d4bbca5de202a7b766233'])
+    instance.fetch_user_borrow_wallet(['hx...'])
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=32) as executor:
         executor.map(instance.get_liquidation_list, instance.wallets)
+
+    # liquidation list
+    # print(instance.sort_list())
+
     instance.liquidate()
     instance.save_txn_info()
